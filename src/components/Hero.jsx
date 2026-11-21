@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { portfolioData } from '../data/portfolioData';
 import {
   IconGitHub,
@@ -8,72 +8,75 @@ import {
   IconArrowRight,
   IconDownload,
 } from './Icons';
-import image1 from '../assets/jagathimage1.png';
 import image2 from '../assets/jagathimage2.png';
 import resumePdf from '../assets/Jagath_Krishna-Resume-r.pdf';
 
 export default function Hero({ onCopyToast }) {
-  const [selectedPhoto, setSelectedPhoto] = useState(2);
   const { personal } = portfolioData;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
-    onCopyToast && onCopyToast('Email copied to clipboard!');
+    onCopyToast && onCopyToast('Email address copied to clipboard!');
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-20 bg-[#EEECE5] text-[#191B1A] border-b border-[#B9B6AC]/60">
+    <section id="hero" className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 bg-[#EEECE5] text-[#191B1A] border-b border-[#B9B6AC]/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#191B1A] text-[#EEECE5] text-xs font-mono-code mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#A65B3D] animate-pulse"></span>
-          <span>Available for Immediate Joining</span>
-          <span className="text-[#444640]">|</span>
-          <span className="text-[#B9B6AC]">React Developer</span>
+        {/* Top Status & Meta Strip - Clean, un-congested */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#B9B6AC]/50 mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#191B1A] text-[#EEECE5] text-xs font-mono-code w-fit">
+            <span className="w-2 h-2 rounded-full bg-[#A65B3D] animate-pulse"></span>
+            <span>Available for Immediate Joining</span>
+          </div>
+
+          <div className="flex items-center gap-4 text-xs font-mono-code text-[#444640]">
+            <span>THRISSUR, KERALA</span>
+            <span className="text-[#B9B6AC]">•</span>
+            <span>REACT.JS // FULL-STACK MERN</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Main Hero Split Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Headline & Intro */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Spacious, Focused Headline & Overview */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8 order-2 lg:order-1">
             
+            {/* Monumental Name & Role */}
             <div className="space-y-3">
-              <span className="text-sm font-mono-code font-bold uppercase tracking-wider text-[#A65B3D]">
-                Frontend & Full-Stack Engineering
+              <span className="text-xs sm:text-sm font-mono-code font-bold uppercase tracking-wider text-[#A65B3D] block">
+                Frontend & UI Engineering
               </span>
-              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] uppercase text-[#191B1A]">
+              <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.02] uppercase text-[#191B1A]">
                 Jagath Krishna<span className="text-[#A65B3D]">.</span>
               </h1>
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-[#444640]">
+              <p className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-[#444640]">
                 React.js Developer & MERN Specialist
-              </h2>
+              </p>
             </div>
 
+            {/* Clear, readable elevator pitch with breathing room */}
             <p className="font-sans text-base sm:text-lg text-[#191B1A] leading-relaxed max-w-2xl">
-              Currently engineering robust UI components and dynamic web applications at{' '}
-              <strong className="text-[#191B1A] font-bold">Scanntek Solutions</strong>. Experienced in building responsive, scalable frontends using{' '}
-              <strong className="text-[#191B1A]">React.js</strong>,{' '}
-              <strong className="text-[#191B1A]">Tailwind CSS</strong>, and modern JavaScript, backed by full-stack MERN expertise.
+              Production React developer at <strong className="text-[#191B1A] font-bold">Scanntek Solutions</strong> crafting responsive, modular web applications. Experienced in building reusable components, scalable state workflows, and resilient RESTful API integrations with Tailwind CSS.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* Call to Actions (Clean responsive buttons) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
                 href="#projects"
-                className="font-sans text-sm font-bold px-6 py-3.5 bg-[#191B1A] text-[#EEECE5] hover:bg-[#A65B3D] transition-colors rounded-sm flex items-center gap-2 shadow-sm"
+                className="font-sans text-sm font-bold px-7 py-3.5 bg-[#191B1A] text-[#EEECE5] hover:bg-[#A65B3D] transition-colors rounded-sm flex items-center justify-center gap-2 shadow-sm text-center"
               >
-                <span>View Projects</span>
+                <span>Explore Projects</span>
                 <IconArrowRight className="w-4 h-4" />
               </a>
 
-              {/* Direct PDF Download Anchor */}
               <a
                 href={resumePdf}
                 download="Jagath_Krishna_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="font-sans text-sm font-bold px-6 py-3.5 border-2 border-[#191B1A] text-[#191B1A] hover:bg-[#191B1A] hover:text-[#EEECE5] transition-colors rounded-sm flex items-center gap-2 cursor-pointer"
+                className="font-sans text-sm font-bold px-7 py-3.5 border-2 border-[#191B1A] text-[#191B1A] hover:bg-[#191B1A] hover:text-[#EEECE5] transition-colors rounded-sm flex items-center justify-center gap-2 cursor-pointer text-center"
               >
                 <IconDownload className="w-4 h-4 text-[#A65B3D]" />
                 <span>Download Resume</span>
@@ -82,33 +85,16 @@ export default function Hero({ onCopyToast }) {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="font-sans text-sm font-medium px-4 py-3.5 border border-[#B9B6AC] text-[#444640] hover:border-[#191B1A] hover:text-[#191B1A] transition-colors rounded-sm flex items-center gap-2"
-                title="Click to copy email"
+                className="font-sans text-xs font-semibold px-4 py-3.5 border border-[#B9B6AC] text-[#444640] hover:border-[#191B1A] hover:text-[#191B1A] transition-colors rounded-sm flex items-center justify-center gap-2 cursor-pointer"
+                title="Click to copy email address"
               >
                 <IconMail className="w-4 h-4 text-[#A65B3D]" />
-                <span className="hidden sm:inline text-xs font-mono-code">{personal.email}</span>
-                <span className="sm:hidden text-xs">Copy Email</span>
+                <span>Copy Email</span>
               </button>
             </div>
 
-            {/* Quick Metrics */}
-            <div className="pt-4 border-t border-[#B9B6AC]/60 grid grid-cols-2 sm:grid-cols-3 gap-4 font-sans text-xs">
-              <div>
-                <span className="block text-[#444640] font-mono-code uppercase text-[11px]">Current Role</span>
-                <span className="font-bold text-[#191B1A]">React Dev @ Scanntek</span>
-              </div>
-              <div>
-                <span className="block text-[#444640] font-mono-code uppercase text-[11px]">Education</span>
-                <span className="font-bold text-[#191B1A]">M.C.A (7.34 CGPA)</span>
-              </div>
-              <div>
-                <span className="block text-[#444640] font-mono-code uppercase text-[11px]">Location</span>
-                <span className="font-bold text-[#191B1A]">Kerala, India</span>
-              </div>
-            </div>
-
             {/* Social channels */}
-            <div className="flex items-center gap-5 text-sm font-medium text-[#444640]">
+            <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-[#444640]">
               <a
                 href={personal.github}
                 target="_blank"
@@ -140,45 +126,73 @@ export default function Hero({ onCopyToast }) {
 
           </div>
 
-          {/* Right Column: Clean Image */}
-          <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="w-full max-w-sm">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#B9B6AC]/20 shadow-xl transition-all">
+          {/* Right Column: Clean, Natural, Single-Image Presentation */}
+          <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
+            <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-md">
+              
+              {/* Clean Image Container without boxy frame or text */}
+              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#B9B6AC]/30 to-[#B9B6AC]/10 shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
                 <img
-                  src={selectedPhoto === 1 ? image1 : image2}
-                  alt="Jagath Krishna - React Developer"
-                  className="w-full h-full object-cover object-top transition-all duration-300"
+                  src={image2}
+                  alt="Jagath Krishna - React.js Developer"
+                  className="w-full h-auto object-cover object-top block"
+                  priority="true"
                 />
               </div>
 
-              {/* Clean Switch Buttons Below Image */}
-              <div className="flex items-center justify-center gap-2 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setSelectedPhoto(2)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    selectedPhoto === 2
-                      ? 'bg-[#191B1A] text-[#EEECE5] font-bold shadow-sm'
-                      : 'bg-[#B9B6AC]/40 text-[#444640] hover:text-[#191B1A]'
-                  }`}
-                >
-                  Studio Photo
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedPhoto(1)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    selectedPhoto === 1
-                      ? 'bg-[#191B1A] text-[#EEECE5] font-bold shadow-sm'
-                      : 'bg-[#B9B6AC]/40 text-[#444640] hover:text-[#191B1A]'
-                  }`}
-                >
-                  Portrait Photo
-                </button>
+              {/* Minimal floating role indicator */}
+              <div className="mt-3 text-center">
+                <span className="inline-block text-xs font-mono-code text-[#444640] uppercase tracking-wider">
+                  Jagath Krishna // React.js Developer
+                </span>
               </div>
+
             </div>
           </div>
 
+        </div>
+
+        {/* Decompressed Horizontal Metrics Strip Across Full Width */}
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-[#B9B6AC]/60 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono-code uppercase text-[#A65B3D] block font-bold">
+              01 // Current Engagement
+            </span>
+            <span className="font-sans text-sm font-bold text-[#191B1A] block">
+              Scanntek Solutions
+            </span>
+            <span className="text-xs text-[#444640] block">React.js Developer</span>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono-code uppercase text-[#A65B3D] block font-bold">
+              02 // Education
+            </span>
+            <span className="font-sans text-sm font-bold text-[#191B1A] block">
+              M.C.A (7.34 CGPA)
+            </span>
+            <span className="text-xs text-[#444640] block">KTU Technological Univ</span>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono-code uppercase text-[#A65B3D] block font-bold">
+              03 // Full-Stack Base
+            </span>
+            <span className="font-sans text-sm font-bold text-[#191B1A] block">
+              MERN Stack
+            </span>
+            <span className="text-xs text-[#444640] block">MongoDB, Node, Express</span>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono-code uppercase text-[#A65B3D] block font-bold">
+              04 // Availability
+            </span>
+            <span className="font-sans text-sm font-bold text-[#A65B3D] block">
+              Immediate Joining
+            </span>
+            <span className="text-xs text-[#444640] block">0 Days Notice Period</span>
+          </div>
         </div>
 
       </div>
