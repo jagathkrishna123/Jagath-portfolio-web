@@ -10,6 +10,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
+import SmoothScroll from './components/SmoothScroll';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#191B1A] text-[#EEECE5] selection:bg-[#A65B3D] selection:text-[#EEECE5] relative font-sans antialiased">
+      <SmoothScroll />
       {/* Navigation bar with direct PDF download */}
       <Navbar />
 
